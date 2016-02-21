@@ -1,5 +1,7 @@
 {
 	"port":8080,
 	"header":"header.html",
-	"footer":"footer.html"
+	"footer":"footer.html",
+	"theme":"monokai",
+	"default_edit":"text"
 }

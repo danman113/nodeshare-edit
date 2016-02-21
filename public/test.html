@@ -3,10 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Ace test</title>
-	<script src="bootstrap/jquery-2.2.0.min.js"></script>
-	<script src="ace/ace.js"></script>
-	<script src="bootstrap/bootstrap.min.js"></script>
-	<style src="bootstrap/bootstrap.min.css"></style>
+	<script src="/##public##/bootstrap/jquery-2.2.0.min.js"></script>
+	<script src="/##public##/ace/ace.js"></script>
+	<script src="/##public##/bootstrap/bootstrap.min.js"></script>
+	<style src="/##public##/bootstrap/bootstrap.min.css"></style>
 	<style>
 	#editor { 
         position: absolute;
@@ -18,11 +18,11 @@
     </style>
 </head>
 <body>
-	<div id="editor"></div>
+	<div id="editor">##content##</div>
 	<script>
 	var editor = ace.edit("editor");
-	editor.setTheme("ace/theme/monokai");
-	editor.getSession().setMode("ace/mode/javascript");
+	editor.setTheme("ace/theme/##theme##");
+	editor.getSession().setMode("ace/mode/##edit##");
 	</script>
 </body>
 </html>

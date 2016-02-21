@@ -5,7 +5,7 @@ var sendEditor = require('./send-editor.js');
 module.exports = function(config, http, app){
 	console.log(config);
 	app.use(function(req, res, next){
-		console.log("Request at: " + req.originalUrl);
+		console.log('Request at: ' + req.originalUrl);
 		if(req.query.edit == true){
 			sendEditor(config, http, app, req, res);
 		} else if (req.originalUrl[req.originalUrl.length-1]=="/"){
@@ -15,6 +15,7 @@ module.exports = function(config, http, app){
 		}
 	});
 	app.use(express.static(path.resolve(config.directory)));
+	app.use('/'+config.public_token, express.static(path.resolve(__dirname,'..','public')));
 	http.listen(config.port,function(){
 		console.log('listening on port ' + config.port);
 	});

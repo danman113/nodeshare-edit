@@ -16,7 +16,9 @@ var main = function(){
 	} else {
 		config.directory = argv._[0];
 	}
-	
+	if(!config.public_token){
+		config.public_token = (new Date()).getTime();
+	}
 	server(config,http,app);
 };
 
