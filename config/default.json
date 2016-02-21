@@ -1,0 +1,5 @@
+{
+	"port":8080,
+	"header":"header.html",
+	"footer":"footer.html"
+}
