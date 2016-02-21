@@ -1,0 +1,19 @@
+{
+  "name": "nodeshare-edit",
+  "version": "1.0.0",
+  "description": "A nodeshare for development! Creates a fileserver with ACE editor integration built in!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danman113/nodeshare-edit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danman113/nodeshare-edit/issues"
+  },
+  "homepage": "https://github.com/danman113/nodeshare-edit"
+}
