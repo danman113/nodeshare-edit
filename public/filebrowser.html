@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="/##public##/bootstrap/jquery-2.2.0.min.js"></script>
+	<script src="/##public##/bootstrap/bootstrap.min.js"></script>
+	<link href="/##public##/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+	<style>
+		.folder{
+			background-color:red;
+		}
+	</style>
+	<title>Folder</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<!-- denotes filespace. Each file will get a copy of it
+			##filename## dentotes where the filename will be same with filesize. 
+			must be inside filespace.
+			-->
+			$$<div class="col-lg-2 col-md-3 col-sm-6 ##folder##folder##folder## ##file##file##file##">
+				<a href="##filename##">##filename##</a>##filesize##
+			</div>$$
+
+		</div>
+	</div>
+</body>
+</html>

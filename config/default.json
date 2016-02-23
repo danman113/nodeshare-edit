@@ -3,5 +3,7 @@
 	"header":"header.html",
 	"footer":"footer.html",
 	"theme":"monokai",
-	"default_edit":"text"
+	"default_edit":"text",
+	"public_token":"test",
+	"restricted":[]
 }
