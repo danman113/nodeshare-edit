@@ -6,20 +6,20 @@ module.exports = function(config, http, app, req, res){
 	var abspath = path.resolve('.'+req.path);
 	console.log(req.path);
 	console.log(abspath);
-	readFileP(abspath).then(function(data){
-		sendEditor(config, data, res);
-	}).fail(function(err){
-		res.send('Error: ' + err.toString());
-	});
+	var edit = config.default_edit;
+	var filetype = path.parse(req.path).ext;
+	if(filetype in config.languages)
+		edit = config.languages[filetype];
+	sendEditor(config, '', res, edit);
 };
 
-function sendEditor(config, data, res){
+function sendEditor(config, data, res, filetype){
 	readFileP(path.resolve(__dirname, '..', 'public/editor.html'))
 	.then(function(value){
 		var editor = value;
 		editor = editor.replace('##content##',data);
 		editor = editor.replace('##theme##',config.theme);
-		editor = editor.replace('##edit##',config.default_edit);
+		editor = editor.replace('##edit##',filetype);
 		editor = editor.split('##public##')
 				.join(config.public_token);
 		res.send(editor);

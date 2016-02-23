@@ -10,8 +10,8 @@ module.exports = function(config, http, app){
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({extended: true}));
 	app.use(function(req, res, next){
-		console.log('save at: ' + req.originalUrl);
 		if(req.method=='POST'){
+			console.log('save at: ' + req.originalUrl);
 			saveFile(config, http, app, req, res);
 		} else
 			next();
