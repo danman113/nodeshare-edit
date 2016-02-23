@@ -16,7 +16,8 @@ module.exports = function(argv){
 	if(argv.config){
 		defaultValues.config = argv.config;
 	}
-	var config = parseConfig(path.resolve(__dirname,'../config/default.json'));
+	var config = parseConfig(
+		path.resolve(__dirname,'../config/default.json'));
 	var newConfig;
 	if(defaultValues.config){
 		newconfig = parseConfig(defaultValues.config);

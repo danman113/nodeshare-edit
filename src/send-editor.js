@@ -14,12 +14,14 @@ module.exports = function(config, http, app, req, res){
 };
 
 function sendEditor(config, data, res){
-	readFileP(path.resolve(__dirname, '..', 'public/editor.html')).then(function(value){
+	readFileP(path.resolve(__dirname, '..', 'public/editor.html'))
+	.then(function(value){
 		var editor = value;
 		editor = editor.replace('##content##',data);
 		editor = editor.replace('##theme##',config.theme);
 		editor = editor.replace('##edit##',config.default_edit);
-		editor = editor.split('##public##').join(config.public_token);
+		editor = editor.split('##public##')
+				.join(config.public_token);
 		res.send(editor);
 	}).fail(function(err){
 		res.send('Error: ' + err.toString());

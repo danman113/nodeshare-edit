@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/danman113/nodeshare-edit",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "fs": "0.0.2",
     "http": "0.0.0",

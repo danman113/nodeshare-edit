@@ -5,5 +5,23 @@
 	"theme":"monokai",
 	"default_edit":"text",
 	"public_token":"test",
-	"restricted":[]
+	"restricted":[],
+	"languages":{
+		".js":"javascript",
+		".html":"html",
+		".c":"c_cpp",
+		".cpp":"c_cpp",
+		".h":"c_cpp",
+		".as":"actionscript",
+		".py":"python",
+		".css":"css",
+		".py":"python",
+		".less":"less",
+		".m":"objectivec",
+		".php":"php",
+		".ruby":"ruby",
+		".scss":"scss",
+		".xml":"xml",
+		".txt":"text"
+	}
 }

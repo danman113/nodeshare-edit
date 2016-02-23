@@ -34,7 +34,8 @@ function formatDirectory(config, res, data){
 		if(filespace){
 			for(var i in data){
 				str += filespace[0].replace('$$','').replace('$$','')
-				.split('##filename##').join(i).split('##filesize##').join(data[i].size)
+				.split('##filename##').join(i).split('##filesize##')
+				.join(data[i].size)
 				.replace(/\#\#folder\#\#([\s\S]*)\#\#folder\#\#/g,function(a,b){
 					if(data[i].isFile())
 						return b;

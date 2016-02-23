@@ -1,10 +1,21 @@
 var express = require('express');
 var path = require('path');
+var bodyParser = require('body-parser');
 var sendDirectory = require('./send-directory.js');
 var sendEditor = require('./send-editor.js');
+var saveFile = require('./save-file.js');
 var send404 = require('./404.js');
 module.exports = function(config, http, app){
 	console.log(config);
+	app.use(bodyParser.json());
+	app.use(bodyParser.urlencoded({extended: true}));
+	app.use(function(req, res, next){
+		console.log('save at: ' + req.originalUrl);
+		if(req.method=='POST'){
+			saveFile(config, http, app, req, res);
+		} else
+			next();
+	});
 	app.use(function(req, res, next){
 		console.log('Request at: ' + req.originalUrl);
 		if(config.restricted.indexOf(path.parse(req.path).ext)>=0 &&
@@ -26,7 +37,6 @@ module.exports = function(config, http, app){
 	
 	app.use('/'+config.public_token, 
 	express.static(path.resolve(__dirname,'..','public')));
-	
 	http.listen(config.port,function(){
 		console.log('listening on port ' + config.port);
 	});
