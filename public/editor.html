@@ -23,8 +23,8 @@
 	var editor = ace.edit("editor");
 	editor.setTheme("ace/theme/##theme##");
 	editor.getSession().setMode("ace/mode/##edit##",function(){
-		$.get(window.location.pathname, {success:function(data){
-			console.log('got');
+		$.get(window.location.origin+window.location.pathname, function(data){		
+			console.log('got',data);
 			var content;
 			if (editor.getSession().getMode().$id=="ace/mode/xml"){
 				content = new XMLSerializer().serializeToString(data);
@@ -32,7 +32,7 @@
 				content = data;
 			}
 			editor.setValue(content);
-		}});
+		});
 	});
 	editor.commands.addCommand({
 		name: 'save',
