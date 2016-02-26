@@ -23,15 +23,13 @@
 	var editor = ace.edit("editor");
 	editor.setTheme("ace/theme/##theme##");
 	editor.getSession().setMode("ace/mode/##edit##",function(){
-		$.get(window.location.origin+window.location.pathname, function(data){		
-			console.log('got',data);
-			var content;
-			if (editor.getSession().getMode().$id=="ace/mode/xml"){
-				content = new XMLSerializer().serializeToString(data);
-			} else {
-				content = data;
+		$.get({
+			url:window.location.origin+window.location.pathname,
+			success:function(data){
+				appendToEditor(data);
+			}, error:function(e){
+				appendToEditor(e.responseText);
 			}
-			editor.setValue(content);
 		});
 	});
 	editor.commands.addCommand({
@@ -45,6 +43,16 @@
 		},
 		readOnly: false 
 	});
+
+	function appendToEditor(data){
+		var content;
+		if (editor.getSession().getMode().$id=="ace/mode/xml"){
+			content = new XMLSerializer().serializeToString(data);
+		} else {
+			content = data;
+		}
+		editor.setValue(content);
+	}
 	</script>
 </body>
 </html>
