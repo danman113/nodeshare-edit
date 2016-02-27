@@ -7,8 +7,8 @@ var saveFile = require('./save-file.js');
 var send404 = require('./404.js');
 module.exports = function(config, http, app){
 	console.log(config);
-	app.use(bodyParser.json());
-	app.use(bodyParser.urlencoded({extended: true}));
+	app.use(bodyParser.json({limit: '100mb'}));
+	app.use(bodyParser.urlencoded({limit: '100mb', extended: true}));
 	app.use(function(req, res, next){
 		if(req.method=='POST'){
 			console.log('save at: ' + req.originalUrl);
