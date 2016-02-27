@@ -25,6 +25,7 @@
 	editor.getSession().setMode("ace/mode/##edit##",function(){
 		$.get({
 			url:window.location.origin+window.location.pathname,
+			dataType: 'text',
 			success:function(data){
 				appendToEditor(data);
 			}, error:function(e){
@@ -48,8 +49,6 @@
 		var content;
 		if (editor.getSession().getMode().$id=="ace/mode/xml"){
 			content = new XMLSerializer().serializeToString(data);
-		} else if(editor.getSession().getMode().$id=="ace/mode/json"){
-			content = JSON.stringify(data);
 		} else {
 			content = data;
 		}
