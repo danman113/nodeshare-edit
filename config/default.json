@@ -22,6 +22,14 @@
 		".ruby":"ruby",
 		".scss":"scss",
 		".xml":"xml",
-		".txt":"text"
+		".txt":"text",
+		".coffee":"coffee",
+		".dart":"dart",
+		".java":"java",
+		".lua":"lua",
+		".scss":"scss",
+		".tex":"latex",
+		".json":"json",
+		".jade":"jade"
 	}
 }
