@@ -15,6 +15,9 @@ module.exports = function(config, http, app, req, res){
 				formatDirectory(config, res, data);
 			}));
 		}
+		if(data.length<=0){
+			formatDirectory(config, res, data);
+		}
 	}).fail(function(err){
 		console.log(err);
 		res.send(err.toString());
@@ -33,20 +36,22 @@ function formatDirectory(config, res, data){
 		var str = "";
 		if(filespace){
 			for(var i in data){
-				str += filespace[0].replace('$$','').replace('$$','')
+				var string = "";
+				string = filespace[0].replace('$$','').replace('$$','')
 				.split('##filename##').join(i).split('##filesize##')
 				.join(data[i].size)
-				.replace(/\#\#folder\#\#([\s\S]*)\#\#folder\#\#/g,function(a,b){
-					if(data[i].isFile())
-						return b;
-					else
-						return '';
-				}).replace(/\#\#file\#\#([\s\S]*)\#\#file\#\#/g,function(a,b){
+				.replace(/\#\#folder\#\#([^#]*)\#\#folder\#\#/g,function(a,b){
 					if(data[i].isDirectory())
 						return b;
 					else
 						return '';
+				}).replace(/\#\#file\#\#([^#]*)\#\#file\#\#/g,function(a,b){
+					if(data[i].isFile())
+						return b;
+					else
+						return '';
 				});
+				str += string;
 			}
 		}
 		editor = editor.replace(/\$\$([\s\S])*\$\$/g,str);

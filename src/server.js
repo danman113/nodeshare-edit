@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var sendDirectory = require('./send-directory.js');
+var deleteDirectory = require('./delete-directory.js');
 var sendEditor = require('./send-editor.js');
 var saveFile = require('./save-file.js');
 var send404 = require('./404.js');
@@ -13,6 +14,9 @@ module.exports = function(config, http, app){
 		if(req.method=='POST'){
 			console.log('save at: ' + req.originalUrl);
 			saveFile(config, http, app, req, res);
+		} else if(req.method=='DELETE'){
+			console.log('deleting at: ' + req.originalUrl);
+			deleteDirectory(config, http, app, req, res);
 		} else
 			next();
 	});

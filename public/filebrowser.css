@@ -1,0 +1,16 @@
+.folder{
+	background-color:red;
+}
+
+.options{
+	cursor: pointer;
+}
+
+.optionsBar{
+position:absolute;
+background-color:blue;
+}
+
+.info{
+	overflow-x:hidden;
+}

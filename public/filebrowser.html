@@ -4,12 +4,9 @@
 	<meta charset="UTF-8">
 	<script src="/##public##/bootstrap/jquery-2.2.0.min.js"></script>
 	<script src="/##public##/bootstrap/bootstrap.min.js"></script>
+	<script src="/##public##/filebrowser.js"></script>
 	<link href="/##public##/bootstrap/bootstrap.min.css" rel="stylesheet"/>
-	<style>
-		.folder{
-			background-color:red;
-		}
-	</style>
+	<link href="/##public##/filebrowser.css" rel="stylesheet"/>
 	<title>Folder</title>
 </head>
 <body>
@@ -19,10 +16,26 @@
 			##filename## dentotes where the filename will be same with filesize. 
 			must be inside filespace.
 			-->
-			$$<a href="##filename##"><div class="col-lg-2 col-md-3 col-sm-6 
-				##folder##folder##folder## ##file##file##file##">
-				##filename####filesize##
-			</div></a>$$
+			<button class="btn btn-primary" id="_file">New File</button>
+			<button class="btn btn-primary" id="_folder">New Folder</button><br>
+			$$<div class="col-lg-2 col-md-3 col-sm-6">
+				<div class="row">
+					<a href="##filename##">
+						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 info ##folder##folder##folder## ##file##file##file##">
+							##filename##
+						</div>
+					</a>
+					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 optionsBar" data-slide="##filename##" style="display:none">
+						##file##
+							##filesize##	
+						##file##
+					</div>
+					<!-- [data-slide='##filename##'] -->
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 options" data-target="##filename##" >
+						<span class="glyphicon glyphicon-cog"></span>
+					</div>
+				</div>
+			</div>$$
 
 		</div>
 	</div>
