@@ -1,16 +1,57 @@
 .folder{
-	background-color:red;
+	background-color:#A8DBA8;
+	color: #EEFFEF;
+	border-bottom: 5px solid #96C496;
+}
+
+.file{
+	background-color:#3B8686;
+	color: #EEFFEF;
+	border-bottom: 5px solid #357878;
 }
 
 .options{
 	cursor: pointer;
+	padding:7px;
+	font-size: larger;
 }
 
 .optionsBar{
-position:absolute;
-background-color:blue;
+	position:absolute;
+	padding-left:7px;
+	padding-right:7px;
+    font-size: larger;
+    color: #EEFFEF;
+}
+
+.optionsBar a{
+    color: #EEFFEF;
 }
 
 .info{
 	overflow-x:hidden;
+	padding:7px;
+    font-size: larger;
+}
+
+.trash{
+	text-align: center;
+	background-color: #C44D58;
+	padding-top:7px;
+	padding-bottom:7px;
+	cursor: pointer;
+}
+
+.edit{
+	text-align: center;
+	background-color: #4ECDC4;
+	padding-top:7px;
+	padding-bottom:7px;
+}
+
+.filesize{
+	text-align: center;
+	background-color: #556270;
+	padding-top:7px;
+	padding-bottom:7px;
 }

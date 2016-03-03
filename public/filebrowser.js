@@ -31,7 +31,6 @@ function touch(){
 }
 
 function toggle(a){
-	console.log(a.currentTarget);
 	var target = a.currentTarget.getAttribute('data-target');
 	
 	if($('[data-slide="'+target+'"]').hasClass('toggled')){
@@ -47,13 +46,18 @@ function toggle(a){
 		$('[data-slide="'+target+'"]').slideDown(300);
 		$('[data-slide="'+target+'"]').addClass('toggled');
 	}
-	console.log(a);
+}
 
+function del(a){
+	var deleteUrl = window.location.href + a.currentTarget.getAttribute('data-delete');
+	console.log(deleteUrl);
+	
 }
 
 function main(){
 	$('#_file').click(touch);
 	$('#_folder').click(mkdir);
 	$('.options').click(toggle);
+	$('.trash').click(del);
 }
 $(main);
