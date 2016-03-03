@@ -49,9 +49,21 @@ function toggle(a){
 }
 
 function del(a){
-	var deleteUrl = window.location.href + a.currentTarget.getAttribute('data-delete');
+	var data_delete = a.currentTarget.getAttribute('data-delete');
+	var deleteUrl = window.location.href + data_delete;
 	console.log(deleteUrl);
-	
+	$.ajax({
+		url:deleteUrl,
+		type:'delete',
+		success:function(){
+			alert('Deleted item: ' + data_delete);
+			location.reload();
+		},
+		error:function(e){
+			alert("Error: " + e.toString());
+			console.log(e);
+		}
+	});
 }
 
 function main(){
