@@ -69,7 +69,7 @@ function del(a){
 function main(){
 	$('#_file').click(touch);
 	$('#_folder').click(mkdir);
-	$('.options').click(toggle);
-	$('.trash').click(del);
+	$('[data-target]').click(toggle);
+	$('[data-delete]').click(del);
 }
 $(main);
