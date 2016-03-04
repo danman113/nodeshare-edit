@@ -1,7 +1,6 @@
 {
 	"port":8080,
-	"header":"header.html",
-	"footer":"footer.html",
+	"filebrowser":"./filebrowser.html",
 	"theme":"monokai",
 	"default_edit":"text",
 	"public_token":"test",

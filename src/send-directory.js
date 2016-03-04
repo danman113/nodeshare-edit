@@ -25,7 +25,15 @@ module.exports = function(config, http, app, req, res){
 };
 
 function formatDirectory(config, res, data){
-	readFileP(path.resolve(__dirname, '..', 'public/filebrowser.html'))
+	console.log(config.filebroswer);
+	if(!config.filebroswer) config.filebroswer = "./filebrowser.html";
+	var browserPath = "";
+	if(path.isAbsolute(config.filebroswer)){
+		browserPath = path.resolve(config.filebroswer);
+	} else {
+		browserPath = path.resolve(__dirname, '..', 'public', config.filebroswer);
+	}
+	readFileP(browserPath)
 	.then(function(value){
 		var editor = value;
 		editor = editor.replace('##content##',data);
@@ -36,6 +44,8 @@ function formatDirectory(config, res, data){
 		var str = "";
 		if(filespace){
 			for(var i in data){
+				if(i[0]=='.')
+					continue;
 				var string = "";
 				string = filespace[0].replace('$$','').replace('$$','')
 				.split('##filename##').join(i).split('##filesize##')
