@@ -7,15 +7,22 @@ To run nodeshare-edit, simply run "nodeshare" on whatever directory you want to 
 
 ## Settings
 You can set the port with the command line option "nodeshare --port=80"
+
 You can also set the config JSON file with "nodeshare --config=PATHTOJSON"
 
 ### Custom JSON
 `port`: Default port that nodeshare will run if not specified.
+
 `filebrowser`: Location of the file that will be formatted and sent when a request to a folder is made. If the path is relative, it must be relative to the public folder. Otherwise it must be an absolute path.
-`theme`: Default theme of the editor. Look up "Ace editor themes" for more themes. Add them to "public/ace" if you want to add external themes. 
+
+`theme`: Default theme of the editor. Look up "Ace editor themes" for more themes. Add them to "public/ace" if you want to add external themes.
+
 `default_edit`: The default editing mode of the editor. Can be set to something such as 'javascript' to enable syntax highlighting to unknown filetypes.
+
 `public_token`: As nodeshare-edit keeps filepaths identical to the filepath in your system, it needs a special path for resources it needs to function, such as the editor and stylesheets. This can be used to change which path that is. For example, if you have a folder called "test" in your default directory, if you set the public_token to "test", you may get some issues. If test is unspecified in the JSON, it will make a random one for you.
+
 `restricted`: A list of restricted filetypes. Files ending with these will not be sent.
+
 `languages`: A hash of filetypes and the associated modes with them. If a filetype ends with one of the lefthand elements, the mode will be set to the righthand element.
 
 ## Custom Filebrowsers
