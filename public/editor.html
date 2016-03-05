@@ -6,7 +6,11 @@
 	<script src="/##public##/bootstrap/jquery-2.2.0.min.js"></script>
 	<script src="/##public##/ace/ace.js"></script>
 	<script src="/##public##/bootstrap/bootstrap.min.js"></script>
+	<script src="/##public##/require.js"></script>
 	<style src="/##public##/bootstrap/bootstrap.min.css"></style>
+	<script src="/##public##/emmet.js"></script>
+	<!-- load ace emmet extension -->
+	<script src="/##public##/ace/ext-emmet.js"></script>
 	<style>
 	#editor { 
 		position: absolute;
@@ -21,6 +25,7 @@
 	<div id="editor"></div>
 	<script>
 	var editor = ace.edit("editor");
+	editor.setOption("enableEmmet", true);
 	editor.setTheme("ace/theme/##theme##");
 	editor.getSession().setMode("ace/mode/##edit##",function(){
 		$.get({
@@ -33,18 +38,6 @@
 			}
 		});
 	});
-	editor.commands.addCommand({
-		name: 'save',
-		bindKey: {win: 'Ctrl-S',  mac: 'Command-S'},
-		exec: function(editor) {
-			console.log('saving folder');
-			$.post(window.location, {data: editor.getValue()}, function(data) {
-				console.log(data);
-			});
-		},
-		readOnly: false 
-	});
-
 	function appendToEditor(data){
 		var content;
 		if (editor.getSession().getMode().$id=="ace/mode/xml"){
@@ -55,5 +48,6 @@
 		editor.setValue(content);
 	}
 	</script>
+	<script src="/##public##/editor.js"></script>
 </body>
 </html>

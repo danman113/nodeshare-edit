@@ -4,7 +4,6 @@ var q = require('q');
 
 
 module.exports = function(config, http, app, req, res){
-	console.log(req.path);
 	readDir(req.path).then(function(data){
 		console.log(data);
 		var dir = {};
@@ -12,11 +11,11 @@ module.exports = function(config, http, app, req, res){
 			console.log(path.join(req.path,data[i]));
 			statP(path.resolve(path.join('.',req.path,data[i])))
 			.then(closureKeeper(data[i],dir,data.length,function(data){
-				formatDirectory(config, res, data);
+				formatDirectory(config, req, res, data);
 			}));
 		}
 		if(data.length<=0){
-			formatDirectory(config, res, data);
+			formatDirectory(config, req, res, data);
 		}
 	}).fail(function(err){
 		console.log(err);
@@ -24,8 +23,7 @@ module.exports = function(config, http, app, req, res){
 	});
 };
 
-function formatDirectory(config, res, data){
-	console.log(config.filebroswer);
+function formatDirectory(config, req, res, data){
 	if(!config.filebroswer) config.filebroswer = "./filebrowser.html";
 	var browserPath = "";
 	if(path.isAbsolute(config.filebroswer)){
@@ -33,6 +31,7 @@ function formatDirectory(config, res, data){
 	} else {
 		browserPath = path.resolve(__dirname, '..', 'public', config.filebroswer);
 	}
+	console.log(path.parse(req.path).dir);
 	readFileP(browserPath)
 	.then(function(value){
 		var editor = value;
@@ -40,6 +39,7 @@ function formatDirectory(config, res, data){
 		editor = editor.replace('##theme##',config.theme);
 		editor = editor.replace('##edit##',config.default_edit);
 		editor = editor.split('##public##').join(config.public_token);
+		editor = editor.split('##back##').join(path.parse(req.path).dir);
 		var filespace = editor.match(/\$\$([\s\S])*\$\$/g);
 		var str = "";
 		if(filespace){

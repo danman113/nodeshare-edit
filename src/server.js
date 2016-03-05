@@ -41,6 +41,9 @@ module.exports = function(config, http, app){
 	
 	app.use('/'+config.public_token, 
 	express.static(path.resolve(__dirname,'..','public')));
+	app.use(function(req,res){
+		send404(path.parse(req.path).ext,config,res);
+	});
 	http.listen(config.port,function(){
 		console.log('listening on port ' + config.port);
 	});
