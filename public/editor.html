@@ -25,6 +25,7 @@
 	<div id="editor"></div>
 	<script>
 	var editor = ace.edit("editor");
+	var Range = ace.require('ace/range').Range;
 	editor.setOption("enableEmmet", true);
 	editor.setTheme("ace/theme/##theme##");
 	editor.getSession().setMode("ace/mode/##edit##",function(){

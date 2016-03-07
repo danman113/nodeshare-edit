@@ -39,6 +39,7 @@ function formatDirectory(config, req, res, data){
 		editor = editor.replace('##theme##',config.theme);
 		editor = editor.replace('##edit##',config.default_edit);
 		editor = editor.split('##public##').join(config.public_token);
+		editor = editor.split('##path##').join(req.path);
 		editor = editor.split('##back##').join(path.parse(req.path).dir);
 		var filespace = editor.match(/\$\$([\s\S])*\$\$/g);
 		var str = "";

@@ -1,0 +1,5 @@
+Todo:
+-Add multiple users editing with marker placement.
+   -Use socket.io and some form of caching
+-Make it so it asks you to save your changes on exit
+Add editing file... on editor.
