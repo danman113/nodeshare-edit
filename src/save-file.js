@@ -2,8 +2,9 @@ var path = require('path');
 var fs = require('fs');
 var q = require('q');
 
-module.exports = function(config, http, app, req, res){
+module.exports = function(config, http, app, req, res, next){
 	var abspath = path.resolve('.'+req.path);
+	console.log('adsfasd');
 	if(req.body.data){
 		writeFileP(abspath,req.body.data).then(function(data){
 			res.send('saved');
@@ -15,6 +16,19 @@ module.exports = function(config, http, app, req, res){
 			});
 			console.log(err);
 		});
+	} else if (req.files){
+		console.log('copying files');
+		var files = 0;
+		for (var i = req.files.length - 1; i >= 0; i--) {
+			var file = req.files[i];
+			console.log(file);
+			writeFileP(path.join(abspath,file.originalname),file.buffer).then(function(){
+				files++;
+				if(files>=req.files.length){
+					next();
+				}
+			});
+		}
 	}
 };
 
@@ -22,7 +36,7 @@ module.exports = function(config, http, app, req, res){
 
 function writeFileP(filepath, file){
 	var defer = q.defer();
-	fs.writeFile(filepath, file,'utf8', function(err, data){
+	fs.writeFile(filepath, file,'binary', function(err, data){
 		if(err){
 			defer.reject(new Error(err));
 		} else {

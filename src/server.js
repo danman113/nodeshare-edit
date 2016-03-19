@@ -6,14 +6,19 @@ var deleteDirectory = require('./delete-directory.js');
 var sendEditor = require('./send-editor.js');
 var saveFile = require('./save-file.js');
 var send404 = require('./404.js');
+var multer = require('multer');
+var uploader = multer();
 module.exports = function(config, http, app){
 	console.log(config);
 	app.use(bodyParser.json({limit: '100mb'}));
 	app.use(bodyParser.urlencoded({limit: '100mb', extended: true}));
+	app.post('/*',uploader.any(),function(req,res,next){
+		next();
+	});
 	app.use(function(req, res, next){
 		if(req.method=='POST'){
 			console.log('save at: ' + req.originalUrl);
-			saveFile(config, http, app, req, res);
+			saveFile(config, http, app, req, res, next);
 		} else if(req.method=='DELETE'){
 			console.log('deleting at: ' + req.originalUrl);
 			deleteDirectory(config, http, app, req, res);

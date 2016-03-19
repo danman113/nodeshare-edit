@@ -17,8 +17,16 @@
 			must be inside filespace.
 			-->
 			<a href="##back##" class="btn btn-primary">Back</a>
+			<div data-slide="_upload" style="display:none">
+				<form action="" method="post" enctype="multipart/form-data">
+					<input type="file" name="file" id="_upload" multiple>
+					<button class="btn btn-primary">Upload!</button>
+				</form>
+			</div>
+			<button class="btn btn-primary" data-target="_upload">Upload File</button>
 			<button class="btn btn-primary" id="_file">New File</button>
 			<button class="btn btn-primary" id="_folder">New Folder</button>
+			
 			<br>
 			$$<div class="col-lg-2 col-md-3 col-sm-6">
 				<div class="row">
