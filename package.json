@@ -1,6 +1,6 @@
 {
   "name": "nodeshare-edit",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A nodeshare for development! Creates a fileserver with ACE editor integration built in!",
   "main": "index.js",
   "scripts": {
