@@ -4,7 +4,6 @@ var q = require('q');
 
 module.exports = function(config, http, app, req, res, next){
 	var abspath = path.resolve('.'+req.path);
-	console.log('adsfasd');
 	if(req.body.data){
 		writeFileP(abspath,req.body.data).then(function(data){
 			res.send('saved');

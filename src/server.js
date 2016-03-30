@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+if(!path.parse) path.parse = require("path-parse");
 var bodyParser = require('body-parser');
 var sendDirectory = require('./send-directory.js');
 var deleteDirectory = require('./delete-directory.js');
