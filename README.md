@@ -28,25 +28,25 @@ You can also set the config JSON file with "nodeshare --config=PATHTOJSON"
 ## Custom Filebrowsers
 Nodeshare-edit contains a simple template system to allow you to customize how the filebrowser looks to suite your taste!
 
-###Repeaters:
+### Repeaters:
 `$$(filespace)$$`: Everything between the $$'s will be repeated for every file and
 folder in the currently selected folder. All other elements will only work inside
 the filespace
 
-###Replace:
+### Replace:
 `##path##`: Will be replaced with whatever directory the 'public_token' is. Basically makes stuff in the "public" folder show up.
 
 `##filename##`: Will be replaced with the filename
 
 `##filesize##`: Will be replaced with filesize
 
-###Conditionals:
+### Conditionals:
 `##file##(html)##file##`: Everything in-between the two ##files##'s will only appear
 when the current filespace belongs to a file.
 
 `##folder##(html)##folder##`: Same as above, but for folders.
 
-###Attributes:
+### Attributes:
 `data-delete`: Will request to delete file inside attribute
 
 `data-target`: Will toggle in the matching data-slide element.
